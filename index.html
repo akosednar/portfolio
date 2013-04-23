@@ -29,11 +29,11 @@
       window.previous = data - 1;
       window.future = data + 1;
       if(window.previous === 0){ 
-      	$(".display").hide("fast");
+      	$(".display").hide();
       	$("#display" + window.current).show("slow");
       }
       else{
-      	$(".display").hide("fast");
+      	$(".display").hide();
       	$("#display" + window.current).show("slow");
       }
     });
