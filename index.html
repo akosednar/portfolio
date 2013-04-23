@@ -29,15 +29,12 @@
       window.previous = data - 1;
       window.future = data + 1;
       if(window.previous === 0){ 
+      	$(".display").hide("fast");
       	$("#display" + window.current).show("slow");
-      	$("#display" + window.future).hide("slow");
       }
       else{
-      	$("#display" + window.previous).hide("slow");
+      	$(".display").hide("fast");
       	$("#display" + window.current).show("slow");
-      	if(future !== 6){
-      		$("#display" + window.future).hide("slow");
-      	}
       }
     });
   </script>
