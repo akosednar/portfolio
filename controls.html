@@ -1,0 +1,25 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+<script>
+function change(number){
+    string = "number=" + number;
+    $.ajax({
+            type: "POST",
+            url: "http://srvpanel.com/portfolio.php",
+            dataType: 'json',
+            data: string
+        });
+
+}
+</script>
+</head>
+<body>
+<a onclick="change('1')">1</a><br /><br />
+<a onclick="change('2')">2</a><br /><br />
+<a onclick="change('3')">3</a><br /><br />
+<a onclick="change('4')">4</a><br /><br />
+<a onclick="change('5)">5</a><br /><br />
+<a onclick="change('6)">6</a><br /><br />
+</body>
+</html>
