@@ -16,6 +16,7 @@
   <script type="text/javascript">
     current = 0;
     previous = 0;
+    future = 0;
 
     // Flash fallback logging - don't include this in production
     WEB_SOCKET_DEBUG = true;
@@ -26,12 +27,17 @@
       console.log(data);
       window.current = data;
       window.previous = data - 1;
+      window.future = data + 1;
       if(window.previous === 0){ 
       	$("#display" + window.current).show("slow");
+      	$("#display" + window.future).hide("slow");
       }
       else{
       	$("#display" + window.previous).hide("slow");
       	$("#display" + window.current).show("slow");
+      	if(future <> 6){}
+      		$("#display" + window.future).hide("slow");
+      	}
       }
     });
   </script>
