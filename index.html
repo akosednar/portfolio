@@ -34,9 +34,18 @@ window.onload = function () {
     WEB_SOCKET_DEBUG = true;
 
     var pusher = new Pusher('2575cfc8c995b2e6b60c');
-    var channel = pusher.subscribe('test_channel');
+    var channel = pusher.subscribe('presentation');
     channel.bind('my_event', function(data) {
       alert(data);
+      current = data;
+      previous = data - 1;
+      if(previous === 0){
+      	$("#display" + current).show("slow");
+      }
+      else{
+      	$("#display" + previous).show("slow");
+      	$("#display" + current).show("slow");
+      }
     });
   </script>
 </head>
