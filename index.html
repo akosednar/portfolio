@@ -18,13 +18,16 @@
     previous = 0;
     future = 0;
     auto = false;
+    auto_time = 30000;
 
-    function auto(){
+    function auto_run(){
     	if(window.auto == true){
     		$(".display").hide();
 	      	$("#display" + window.current).show("slow");
     		current = current + 1;
-    		setTimeout(auto, 30000);
+    		if(current !== "6"){}
+    			setTimeout(auto_run, auto_time);
+    		}
     	}
     }
 
@@ -37,7 +40,7 @@
       console.log(data);
       if(data == "auto"){
       		window.auto = true;
-			setTimeout(auto, 30000);
+			setTimeout(auto_run, auto_time);
       }else{
 	      window.current = data;
 	      window.previous = data - 1;
