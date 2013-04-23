@@ -25,21 +25,19 @@ window.onload = function () {
 </script>
 <script src="http://js.pusher.com/2.0/pusher.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-    // Enable pusher logging - don't include this in production
-    Pusher.log = function(message) {
-      if (window.console && window.console.log) window.console.log(message);
-    };
+    current = 0;
+    previous = 0;
 
     // Flash fallback logging - don't include this in production
     WEB_SOCKET_DEBUG = true;
 
     var pusher = new Pusher('2575cfc8c995b2e6b60c');
     var channel = pusher.subscribe('presentation');
-    channel.bind('my_event', function(data) {
+    channel.bind('change', function(data) {
       console.log(data);
-      current = data;
-      previous = data - 1;
-      if(previous === 0){
+      window.current = data;
+      window.previous = data - 1;
+      if(previous === 0){ 
       	$("#display" + current).show("slow");
       }
       else{
