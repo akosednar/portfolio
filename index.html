@@ -17,6 +17,16 @@
     current = 0;
     previous = 0;
     future = 0;
+    auto = false;
+
+    function auto(){
+    	if(window.auto == true){
+    		$(".display").hide();
+	      	$("#display" + window.current).show("slow");
+    		current = current + 1;
+    		setTimeout(auto, 30000);
+    	}
+    }
 
     // Flash fallback logging - don't include this in production
     WEB_SOCKET_DEBUG = true;
@@ -25,17 +35,25 @@
     var channel = pusher.subscribe('presentation');
     channel.bind('change', function(data) {
       console.log(data);
-      window.current = data;
-      window.previous = data - 1;
-      window.future = data + 1;
-      if(window.previous === 0){ 
-      	$(".display").hide();
-      	$("#display" + window.current).show("slow");
-      }
-      else{
-      	$(".display").hide();
-      	$("#display" + window.current).show("slow");
-      }
+      if(data == "auto"){
+      		window.auto = true;
+			setTimeout(Show3, 30000);
+
+      }else{
+	      window.current = data;
+	      window.previous = data - 1;
+	      window.future = data + 1;
+	      if(window.previous === 0){ 
+	      	$(".display").hide();
+	      	$("#display" + window.current).show("slow");
+	      	window.auto = false;
+	      }
+	      else{
+	      	$(".display").hide();
+	      	$("#display" + window.current).show("slow");
+	      	window.auto = false;
+	      }
+	   }
     });
   </script>
   <style>
