@@ -12,17 +12,6 @@
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/style.css?1.4.222122233f9" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
-
-<script>
-window.onload = function () {
-	$("#display1").delay(10000).show("slow");
-	$("#display1").delay(30000).hide("slow");
-
-	$("#display2").delay(35000).show("slow");
-	$("#display2").delay(45000).hide("slow");
-
-}
-</script>
 <script src="http://js.pusher.com/2.0/pusher.min.js" type="text/javascript"></script>
   <script type="text/javascript">
     current = 0;
@@ -37,17 +26,16 @@ window.onload = function () {
       console.log(data);
       window.current = data;
       window.previous = data - 1;
-      if(previous === 0){ 
-      	$("#display" + current).show("slow");
+      if(window.previous === 0){ 
+      	$("#display" + window.current).show("slow");
       }
       else{
-      	$("#display" + previous).show("slow");
-      	$("#display" + current).show("slow");
+      	$("#display" + window.previous).hide("slow");
+      	$("#display" + window.current).show("slow");
       }
     });
   </script>
 </head>
-
 <body>
 <div id="bar"></div>
 <div id="box">
